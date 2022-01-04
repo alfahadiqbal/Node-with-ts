@@ -6,6 +6,14 @@ import mongoose from "mongoose";
 const app: Application = express();
 const port = 3000;
 
+mongoose.connect('mongodb://localhost:27017/node-with-ts');
+
+mongoose.connection.once('open', () => {
+    console.log("Connection has been made with database");
+}).on('error', err => {
+    console.log("Connection error: ", err);
+});
+
 app.use(bodyParser.json());
 
 app.get("/", (req: Request, res: Response) => {
@@ -15,3 +23,4 @@ app.get("/", (req: Request, res: Response) => {
 app.listen(port, () => {
     return console.log(`Server is listening at http://localhost:${port}`);
 });
+
