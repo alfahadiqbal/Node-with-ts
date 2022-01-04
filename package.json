@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/alfahadiqbal/Node-with-ts/issues"
   },
-  "homepage": "https://github.com/alfahadiqbal/Node-with-ts#readme"
+  "homepage": "https://github.com/alfahadiqbal/Node-with-ts#readme",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
 }
