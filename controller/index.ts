@@ -7,4 +7,7 @@ export class BookController{
     static async update(req: Request, res: Response, next: NextFunction){
         res.status(200).send({"Status": "Updated Sucessfully!"})
     }
+    static async delete(req: Request, res: Response, next: NextFunction){
+        res.status(200).send({"Status": "Delete Sucessfully!"})
+    }
 }
