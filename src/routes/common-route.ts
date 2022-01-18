@@ -1,18 +1,22 @@
 import { Router, Request, Response } from 'express'
 import { Model } from 'mongoose';
 import { create, get, getAll, remove, update } from '../controller/common-controller';
+import { API_TYPE } from '../models/types';
 
-export const commonRoute = (model: Model<any>, path?: string): Router => {
+export const commonRoute = (model: Model<any>, requiredAPIs?: API_TYPE[], path?: string): Router => {
     const router: Router = Router();
     const urlPath = (path)? path: model.modelName.toLowerCase()
 
-    router.get(
-        `/${urlPath}s`,
-        // middleware.authenticate,
-        (request, response, next) => {
-            getAll(request, response, next, model)
-        }
-    )
+    if(requiredAPIs.includes(API_TYPE.GET_ALL)){
+        router.get(
+            `/${urlPath}s`,
+            // middleware.authenticate,
+            (request, response, next) => {
+                getAll(request, response, next, model)
+            }
+        )
+    }
+
 
     router.get(
         `/${urlPath}/:id`,
