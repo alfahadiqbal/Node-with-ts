@@ -18,5 +18,21 @@ const getAll = (request: Request, response: Response, next: NextFunction, model:
         })
 }
 
+const get = (request: Request, response: Response, next: NextFunction, model: Model<any>) => {
+    const query = model.findById(request.params.id).exec()
+        query.then((resource) => {
 
-export {getAll}
+            if (!resource) {
+                // return next(errors.RESOURCE_NOT_FOUND())
+                return next("RESOURCE_NOT_FOUND")
+            }
+
+            return response.json(resource)
+        })
+        .catch((err) => {
+            // send the error to the error handler
+            return next(err)
+        })
+}
+
+export { getAll, get}
