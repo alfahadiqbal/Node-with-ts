@@ -10,4 +10,6 @@ import { commonRoute } from "./common-route";
 
 export const bookRouter: Router = commonRoute(BookModel, [API_TYPE.GET_ALL])
 
-bookRouter.put('', BookController.update)
+bookRouter.put('book', BookController.update)
+bookRouter.post('book', BookController.add)
+
