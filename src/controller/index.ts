@@ -18,7 +18,27 @@ export class BookController{
         })
     }
     static async update(req: Request, res: Response, next: NextFunction){
-        res.status(200).send({"Status": "Updated Sucessfully!"})
+        const obj = BookModel.findById(req.params.id)
+        obj.then((resource: any) => {
+    
+            if (!resource) {
+                // return next(errors.RESOURCE_NOT_FOUND())
+                return next("RESOURCE_NOT_FOUND")
+            }
+    
+            // loop over the object and update the properties
+            Object.keys(req.body).forEach((prop) => {
+                resource[prop] = req.body[prop]
+            })
+    
+            // save
+            return resource.save()
+        })
+        .then((resource) => res.json(resource))
+        .catch((err) => {
+            // send the error to the error handler
+            return next(err)
+        })
     }
     static async delete(req: Request, res: Response, next: NextFunction){
         const obj = BookModel.findById(req.params.id)
