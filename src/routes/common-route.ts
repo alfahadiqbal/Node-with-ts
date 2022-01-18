@@ -37,14 +37,15 @@ export const commonRoute = (model: Model<any>, requiredAPIs?: API_TYPE[], path?:
         )
     }
 
-    router.put(
-        `/${urlPath}/:id`,
-        // middleware.authenticate,
-        (request: Request, response: Response, next) => {
-            update(request, response, next, model)
-        }
-    )
-    
+    if(requiredAPIs.includes(API_TYPE.UPDATE)){
+        router.put(
+            `/${urlPath}/:id`,
+            // middleware.authenticate,
+            (request: Request, response: Response, next) => {
+                update(request, response, next, model)
+            }
+        )
+    }    
     router.delete(
         `/${urlPath}/:id`,
         // middleware.authenticate,
