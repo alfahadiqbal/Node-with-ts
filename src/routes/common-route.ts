@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express'
 import { Model } from 'mongoose';
-import { create, get, getAll, update } from '../controller/common-controller';
+import { create, get, getAll, remove, update } from '../controller/common-controller';
 
 export const commonRoute = (model: Model<any>, path?: string): Router => {
     const router: Router = Router();
@@ -38,5 +38,13 @@ export const commonRoute = (model: Model<any>, path?: string): Router => {
         }
     )
     
+    router.delete(
+        `/${urlPath}/:id`,
+        // middleware.authenticate,
+        (request: Request, response: Response, next) => {
+            remove(request, response, next, model)
+        }
+    )
+
     return router
 }
