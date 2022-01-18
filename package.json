@@ -2,7 +2,7 @@
   "name": "Node-with-ts",
   "version": "1.0.0",
   "description": "Open source node project with typescript",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
