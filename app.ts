@@ -3,7 +3,7 @@ import express from 'express';
 import { Application, Request, Response } from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import { router } from './routes/index';
+import { router } from './src/routes/index';
 const app: Application = express();
 const port = 3000;
 
