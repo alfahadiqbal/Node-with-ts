@@ -9,3 +9,19 @@ Whenever we start a project we spend a lot of time in deciding its directory str
 1. TypeScript Configured
 2. Mongo confugured, Connection is established 
 3. Reusable functionality for CRUD opeations added
+
+## Directory Structure
+
+.
+└── Node-with-ts
+    ├── dist
+    ├── src
+    │   ├── controllers
+    │   ├── models
+    │   └── routes
+    ├── app.ts
+    ├── package.json
+    ├── tsconfig.json
+    ├── README.md
+    ├── .gitignore
+    └── LISCENSE
