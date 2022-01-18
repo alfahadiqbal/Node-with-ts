@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { BookController } from "../controller";
 import { BookModel } from "../models/book";
 import { API_TYPE } from "../models/types";
 import { commonRoute } from "./common-route";
@@ -8,3 +9,5 @@ import { commonRoute } from "./common-route";
 // rest of routes yourself
 
 export const bookRouter: Router = commonRoute(BookModel, [API_TYPE.GET_ALL])
+
+bookRouter.put('', BookController.update)
