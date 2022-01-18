@@ -70,4 +70,23 @@ const update = (request: Request, response: Response, next: NextFunction, model:
     })
 }
 
+const remove = (request: Request, response: Response, next: NextFunction, model: Model<any>) => {
+    const obj = model.findById(request.params.id)
+    obj.then((resource) => {
+
+        // resource not found, let's throw an error
+        if (!resource) {
+            // return next(errors.RESOURCE_NOT_FOUND())
+            return next("RESOURCE_NOT_FOUND")
+        }
+
+        return resource.remove()
+    })
+    .then(() => response.json({'message': `Resource ${request.params.id} deleted`}))
+    .catch((err) => {
+        // send the error to the error handler
+        return next(err)
+    })
+}
+
 export { getAll, get, create}
