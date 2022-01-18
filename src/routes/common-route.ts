@@ -27,13 +27,15 @@ export const commonRoute = (model: Model<any>, requiredAPIs?: API_TYPE[], path?:
         )
     }
 
-    router.post(
-        `/${urlPath}`,
-        // middleware.authenticate,
-        (request: Request, response: Response, next) => {
-            create(request, response, next, model)
-        }
-    )
+    if(requiredAPIs.includes(API_TYPE.CREATE)){
+        router.post(
+            `/${urlPath}`,
+            // middleware.authenticate,
+            (request: Request, response: Response, next) => {
+                create(request, response, next, model)
+            }
+        )
+    }
 
     router.put(
         `/${urlPath}/:id`,
