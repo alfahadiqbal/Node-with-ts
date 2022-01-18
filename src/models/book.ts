@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose'
+import { Schema, model } from 'mongoose'
 
 interface Book {
     name: string,
@@ -10,4 +10,5 @@ const bookSchema = new Schema<Book>({
     author: {type: String, required: true}    
 })
 
-export { Book };
+const BookModel = model<Book>('Book', bookSchema);
+export { BookModel, Book };
