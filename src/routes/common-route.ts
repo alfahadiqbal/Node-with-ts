@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express'
 import { Model } from 'mongoose';
-import { create, get, getAll } from '../controller/common-controller';
+import { create, get, getAll, update } from '../controller/common-controller';
 
 export const commonRoute = (model: Model<any>, path?: string): Router => {
     const router: Router = Router();
@@ -21,7 +21,7 @@ export const commonRoute = (model: Model<any>, path?: string): Router => {
             get(request, response, next, model)
         }
     )
-    
+
     router.post(
         `/${urlPath}`,
         // middleware.authenticate,
@@ -29,5 +29,14 @@ export const commonRoute = (model: Model<any>, path?: string): Router => {
             create(request, response, next, model)
         }
     )
+
+    router.put(
+        `/${urlPath}/:id`,
+        // middleware.authenticate,
+        (request: Request, response: Response, next) => {
+            update(request, response, next, model)
+        }
+    )
+    
     return router
 }
