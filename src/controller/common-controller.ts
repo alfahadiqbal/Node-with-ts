@@ -35,4 +35,15 @@ const get = (request: Request, response: Response, next: NextFunction, model: Mo
         })
 }
 
-export { getAll, get}
+const create = (request: Request, response: Response, next: NextFunction, model: Model<any>) => {
+    const obj = model.create(request.body)
+    obj.then((resource) => {
+        return response.json(resource)
+    })
+    .catch((err) => {
+        // send the error to the error handler
+        return next(err)
+    })
+}
+
+export { getAll, get, create}
