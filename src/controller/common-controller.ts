@@ -89,4 +89,4 @@ const remove = (request: Request, response: Response, next: NextFunction, model:
     })
 }
 
-export { getAll, get, create}
+export { getAll, get, create, update, remove}
