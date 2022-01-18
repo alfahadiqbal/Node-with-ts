@@ -45,14 +45,15 @@ export const commonRoute = (model: Model<any>, requiredAPIs?: API_TYPE[], path?:
                 update(request, response, next, model)
             }
         )
-    }    
-    router.delete(
-        `/${urlPath}/:id`,
-        // middleware.authenticate,
-        (request: Request, response: Response, next) => {
-            remove(request, response, next, model)
-        }
-    )
-
+    }
+    if(requiredAPIs.includes(API_TYPE.DELETE)){ 
+        router.delete(
+            `/${urlPath}/:id`,
+            // middleware.authenticate,
+            (request: Request, response: Response, next) => {
+                remove(request, response, next, model)
+            }
+        )
+    }
     return router
 }
