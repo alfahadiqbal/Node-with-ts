@@ -46,4 +46,28 @@ const create = (request: Request, response: Response, next: NextFunction, model:
     })
 }
 
+const update = (request: Request, response: Response, next: NextFunction, model: Model<any>) => {
+    const obj = model.findById(request.params.id)
+    obj.then((resource) => {
+
+        if (!resource) {
+            // return next(errors.RESOURCE_NOT_FOUND())
+            return next("RESOURCE_NOT_FOUND")
+        }
+
+        // loop over the object and update the properties
+        Object.keys(request.body).forEach((prop) => {
+            resource[prop] = request.body[prop]
+        })
+
+        // save
+        return resource.save()
+    })
+    .then((resource) => response.json(resource))
+    .catch((err) => {
+        // send the error to the error handler
+        return next(err)
+    })
+}
+
 export { getAll, get, create}
