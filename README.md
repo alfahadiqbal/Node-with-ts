@@ -12,8 +12,6 @@ Whenever we start a project we spend a lot of time in deciding its directory str
 
 ## Directory Structure
 
-.
-└── Node-with-ts
     ├── dist
     ├── src
     │   ├── controllers
