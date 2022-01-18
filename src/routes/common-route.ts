@@ -17,14 +17,15 @@ export const commonRoute = (model: Model<any>, requiredAPIs?: API_TYPE[], path?:
         )
     }
 
-
-    router.get(
-        `/${urlPath}/:id`,
-        // middleware.authenticate,
-        (request, response, next) => {
-            get(request, response, next, model)
-        }
-    )
+    if(requiredAPIs.includes(API_TYPE.GET)){
+        router.get(
+            `/${urlPath}/:id`,
+            // middleware.authenticate,
+            (request, response, next) => {
+                get(request, response, next, model)
+            }
+        )
+    }
 
     router.post(
         `/${urlPath}`,
