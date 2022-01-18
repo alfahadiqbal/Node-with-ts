@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { BookController } from "../controller";
+import { BookController } from "../controllers";
 import { BookModel } from "../models/book";
 import { API_TYPE } from "../models/types";
 import { commonRoute } from "./common-route";
