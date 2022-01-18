@@ -12,4 +12,6 @@ export const bookRouter: Router = commonRoute(BookModel, [API_TYPE.GET_ALL])
 
 bookRouter.put('book', BookController.update)
 bookRouter.post('book', BookController.add)
+bookRouter.delete('', BookController.delete)
+
 
