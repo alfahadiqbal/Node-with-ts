@@ -25,3 +25,6 @@ Whenever we start a project we spend a lot of time in deciding its directory str
     ├── README.md
     ├── .gitignore
     └── LISCENSE
+Dirctory structure was generated from [here](https://tree.nathanfriend.io/)
+
+
