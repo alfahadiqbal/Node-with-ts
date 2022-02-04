@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { UserModel } from "../models/user";
+import * as jwt from "jsonwebtoken";
 
 class AuthController {
     static login = async (req: Request, res: Response, next: NextFunction)=>{
@@ -9,12 +10,20 @@ class AuthController {
             res.status(400).send("Please enter Username and passowrd")
         }
         const query = UserModel.find({username: username, password: password}).exec()
-            query.then((resource) => {
-                if (!resource) {
-                    // return next(errors.RESOURCE_NOT_FOUND())
-                    return next("RESOURCE_NOT_FOUND")
+            query.then((user) => {
+                if (!user) {
+                    return next("Invalid Username or Password")
                 }
-                
+
+                // //Sing JWT, valid for 1 hour
+                // const token = jwt.sign(
+                //     { userId: user._id, username: user.username },
+                //     'config.jwtSecret',
+                //     { expiresIn: "1h" }
+                // );
+
+                // //Send the jwt in the response
+                // res.send(token);
                 return res.json("Login Sucessful")
             })
             .catch((err) => {
@@ -24,3 +33,5 @@ class AuthController {
         
     }
 }
+
+export default AuthController;

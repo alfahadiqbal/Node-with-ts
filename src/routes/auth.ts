@@ -1,17 +1,16 @@
 import { NextFunction, Request, Response, Router } from "express";
+import AuthController from "../controllers/auth";
 // import AuthController from "../controllers/AuthController";
 // import { checkJwt } from "../middlewares/checkJwt";
 
-const authenticationRouter = Router();
+const authRouter = Router();
 
 //Login route
-authenticationRouter.post("/login", (req: Request, res: Response, next:NextFunction)=>{
-    res.status(200).send("/login success")
-});
+authRouter.post("/login", AuthController.login)
 
 //Change my password
-authenticationRouter.post("/change-password", (req: Request, res: Response, next:NextFunction)=>{
+authRouter.post("/change-password", (req: Request, res: Response, next:NextFunction)=>{
     res.status(200).send("change-password success")
 });
 
-export default authenticationRouter;
+export default authRouter;
