@@ -3,7 +3,7 @@ import { Model } from 'mongoose';
 import { create, get, getAll, remove, update } from '../controllers/common-controller';
 import { API_TYPE } from '../models/types';
 
-export const commonRoute = (model: Model<any>, requiredAPIs: API_TYPE[] = [API_TYPE.GET_ALL, API_TYPE.GET, API_TYPE.UPDATE, API_TYPE.DELETE], path?: string): Router => {
+export const commonRoute = (model: Model<any>, requiredAPIs: API_TYPE[] = [API_TYPE.GET_ALL, API_TYPE.GET, API_TYPE.CREATE, API_TYPE.UPDATE, API_TYPE.DELETE], path?: string): Router => {
     const router: Router = Router();
     const urlPath = (path)? path: model.modelName.toLowerCase()
 
