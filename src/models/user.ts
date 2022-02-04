@@ -4,7 +4,7 @@ interface User {
     firstName: string,
     lastName: string,
     password: string,
-    dateOfBirth: Date
+    dateOfBirth?: Date
     
 }
 
