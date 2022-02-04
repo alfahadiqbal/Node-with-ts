@@ -5,3 +5,9 @@ export enum API_TYPE {
     UPDATE = "UPDATE",
     DELETE = "DELETE",
 }
+
+export enum ROLE {
+    USER = 'USER',
+    MANAGER = 'MANAGER',
+    ADMIN = 'ADMIN'
+}
