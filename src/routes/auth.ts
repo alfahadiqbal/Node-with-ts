@@ -7,5 +7,8 @@ const router = Router();
 router.post("/login", (req: Request, res: Response, nexr:NextFunction)=>{
     res.status(200).send("/login success")
 });
-
+//Change my password
+router.post("/change-password", (req: Request, res: Response, nexr:NextFunction)=>{
+    res.status(200).send("change-password success")
+});
 export default router;
